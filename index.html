@@ -1,0 +1,1208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tutoring Ledger</title>
+<meta name="description" content="Log IB Maths tutoring sessions, hours and payments.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<meta name="theme-color" content="#F3F5F9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1219" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<style>
+/* Fonts are bundled with the app so it looks the same offline. */
+@font-face { font-family: "Familjen Grotesk"; font-style: normal; font-weight: 600; font-display: swap; src: url(fonts/familjen-grotesk-latin-600-normal.woff2) format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Familjen Grotesk"; font-style: normal; font-weight: 600; font-display: swap; src: url(fonts/familjen-grotesk-latin-ext-600-normal.woff2) format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "Familjen Grotesk"; font-style: normal; font-weight: 700; font-display: swap; src: url(fonts/familjen-grotesk-latin-700-normal.woff2) format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Familjen Grotesk"; font-style: normal; font-weight: 700; font-display: swap; src: url(fonts/familjen-grotesk-latin-ext-700-normal.woff2) format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "Atkinson Hyperlegible"; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/atkinson-hyperlegible-latin-400-normal.woff2) format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Atkinson Hyperlegible"; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/atkinson-hyperlegible-latin-ext-400-normal.woff2) format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "Atkinson Hyperlegible"; font-style: normal; font-weight: 700; font-display: swap; src: url(fonts/atkinson-hyperlegible-latin-700-normal.woff2) format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Atkinson Hyperlegible"; font-style: normal; font-weight: 700; font-display: swap; src: url(fonts/atkinson-hyperlegible-latin-ext-700-normal.woff2) format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/ibm-plex-mono-latin-400-normal.woff2) format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/ibm-plex-mono-latin-ext-400-normal.woff2) format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; font-display: swap; src: url(fonts/ibm-plex-mono-latin-500-normal.woff2) format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; font-display: swap; src: url(fonts/ibm-plex-mono-latin-ext-500-normal.woff2) format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+
+/* Layout: a teacher's register. Month band on graph paper with the totals, session ledger, student roster, then data & settings. */
+:root {
+  --paper: #F3F5F9;
+  --sheet: #FFFFFF;
+  --ink: #17202E;
+  --ink-2: #586275;
+  --rule: #DCE1E9;
+  --grid: rgba(37, 71, 201, 0.07);
+  --accent: #2547C9;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #E7ECFB;
+  --paid: #1D7549;
+  --paid-soft: #E1F1E7;
+  --due: #985805;
+  --due-soft: #FBEED6;
+  --danger: #B3261E;
+  --shade: rgba(9, 13, 22, 0.48);
+
+  --f-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --t-xs: 12px; --t-sm: 14px; --t-md: 16px; --t-lg: 20px; --t-xl: 28px; --t-2xl: 40px;
+  --r: 10px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0E1219; --sheet: #151A23; --ink: #E5E8EE; --ink-2: #9AA3B3; --rule: #273041;
+    --grid: rgba(141, 164, 255, 0.07); --accent: #8DA4FF; --accent-ink: #0E1219; --accent-soft: #1C2545;
+    --paid: #63C897; --paid-soft: #13291D; --due: #E9B257; --due-soft: #2F230D; --danger: #F08A82;
+    --shade: rgba(0, 0, 0, 0.6);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0E1219; --sheet: #151A23; --ink: #E5E8EE; --ink-2: #9AA3B3; --rule: #273041;
+  --grid: rgba(141, 164, 255, 0.07); --accent: #8DA4FF; --accent-ink: #0E1219; --accent-soft: #1C2545;
+  --paid: #63C897; --paid-soft: #13291D; --due: #E9B257; --due-soft: #2F230D; --danger: #F08A82;
+  --shade: rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+:root { padding-top: env(safe-area-inset-top, 0px); }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: var(--t-md); line-height: 1.5; -webkit-tap-highlight-color: transparent; }
+img { max-width: 100%; }
+h1, h2, h3 { font-family: var(--f-display); margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+p { margin: 0; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+.wrap {
+  max-width: 1180px; margin: 0 auto;
+  padding-block: 24px calc(56px + env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 20px;
+}
+
+/* Header */
+.top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; }
+.top h1 { font-size: var(--t-xl); font-weight: 700; }
+.top .sub { color: var(--ink-2); font-size: var(--t-sm); margin-top: 2px; }
+.top .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-weight: 700; font-size: var(--t-sm); line-height: 1.2;
+  padding: 10px 16px; border-radius: 8px;
+  border: 1px solid var(--rule); background: var(--sheet); color: var(--ink);
+  cursor: pointer; transition: background-color .15s, border-color .15s, color .15s;
+}
+.btn:hover { border-color: var(--ink-2); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn.ghost { background: transparent; }
+.btn.small { padding: 6px 10px; font-size: var(--t-xs); }
+.btn.danger { color: var(--danger); background: transparent; border-color: transparent; padding-inline: 8px; }
+.btn.danger:hover { border-color: var(--danger); }
+.btn[disabled] { opacity: .5; cursor: not-allowed; }
+.btn .plus { font-size: 1.2em; line-height: 1; margin-top: -1px; }
+
+/* Notices */
+.notice, .banner {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px;
+  padding: 12px 16px; border-radius: var(--r); font-size: var(--t-sm);
+  border: 1px solid var(--rule); background: var(--sheet);
+}
+.banner { background: var(--accent-soft); border-color: transparent; }
+.banner.warn { background: var(--due-soft); }
+.banner p { flex: 1 1 260px; min-width: 0; }
+.banner .acts { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* Month band */
+.month {
+  background-color: var(--sheet);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 16px 16px;
+  border: 1px solid var(--rule); border-radius: var(--r);
+  padding: 20px 24px 22px;
+  display: grid; gap: 18px;
+}
+.month-nav { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.month-nav h2 { font-size: var(--t-2xl); font-weight: 600; line-height: 1.05; min-width: 0; }
+.month-nav .arrows { display: flex; gap: 4px; }
+.arrow {
+  width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--rule);
+  background: var(--sheet); cursor: pointer; font-size: 18px; line-height: 1; color: var(--ink);
+}
+.arrow:hover { border-color: var(--ink-2); }
+.today-link { background: none; border: 0; color: var(--accent); font-weight: 700; font-size: var(--t-sm); cursor: pointer; padding: 4px 2px; }
+
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 0; }
+.stat { display: grid; gap: 2px; align-content: start; padding-left: 14px; border-left: 2px solid var(--rule); min-width: 0; }
+.stat dt { font-size: var(--t-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); }
+.stat dd { margin: 0; font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: 26px; font-weight: 500; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.stat .meta { font-size: var(--t-xs); color: var(--ink-2); }
+.stat.due dd { color: var(--due); }
+.stat.due.clear dd { color: var(--ink); }
+
+/* Main grid */
+.grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 20px; align-items: start; }
+.panel { background: var(--sheet); border: 1px solid var(--rule); border-radius: var(--r); padding: 18px 20px 8px; min-width: 0; }
+.panel-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 12px; padding-bottom: 12px; }
+.panel-head h3 { font-size: var(--t-lg); font-weight: 600; }
+.filters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.select-sm {
+  font-size: var(--t-sm); padding: 7px 30px 7px 10px; border-radius: 8px; border: 1px solid var(--rule);
+  background: var(--sheet); max-width: 100%;
+}
+.check { display: inline-flex; align-items: center; gap: 6px; font-size: var(--t-sm); cursor: pointer; user-select: none; }
+.check input { width: 16px; height: 16px; accent-color: var(--accent); margin: 0; }
+
+/* Session rows */
+.rows { display: grid; }
+.row {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto auto auto;
+  grid-template-areas: "date main num pill edit";
+  align-items: center; gap: 4px 16px;
+  padding: 14px 0; border-top: 1px solid var(--rule);
+}
+.r-date { grid-area: date; display: grid; justify-items: center; align-self: start; line-height: 1; padding-top: 2px; }
+.r-day { font-family: var(--f-display); font-size: 26px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.r-wd { font-size: var(--t-xs); text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); margin-top: 4px; }
+.r-main { grid-area: main; min-width: 0; display: grid; gap: 4px; }
+.r-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
+.r-name { font-weight: 700; }
+.course { font-family: var(--f-mono); font-size: var(--t-xs); color: var(--ink-2); border: 1px solid var(--rule); border-radius: 4px; padding: 0 5px; line-height: 18px; }
+.tag-ex { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); }
+.r-topics { display: flex; flex-wrap: wrap; gap: 4px; }
+.topic { font-size: var(--t-xs); background: var(--accent-soft); color: var(--ink); padding: 1px 8px; border-radius: 4px; }
+.r-notes { font-size: var(--t-sm); color: var(--ink-2); overflow-wrap: anywhere; }
+.r-num { grid-area: num; display: grid; justify-items: end; text-align: right; }
+.r-amt { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-weight: 500; white-space: nowrap; }
+.r-dur { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: var(--t-xs); color: var(--ink-2); white-space: nowrap; }
+.pill {
+  grid-area: pill; justify-self: end;
+  font-size: var(--t-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  padding: 5px 10px; border-radius: 999px; border: 1px solid transparent; cursor: pointer; min-width: 74px;
+}
+.pill.paid { background: var(--paid-soft); color: var(--paid); }
+.pill.due { background: var(--due-soft); color: var(--due); border-color: var(--due); }
+.pill:hover { filter: brightness(0.97); }
+.icon-btn {
+  grid-area: edit; justify-self: end; background: none; border: 1px solid transparent; border-radius: 6px;
+  color: var(--ink-2); font-size: var(--t-sm); font-weight: 700; cursor: pointer; padding: 5px 8px;
+}
+.icon-btn:hover { color: var(--accent); border-color: var(--rule); }
+
+.empty { border-top: 1px solid var(--rule); padding: 28px 4px 32px; display: grid; gap: 10px; justify-items: start; color: var(--ink-2); }
+.empty strong { color: var(--ink); font-family: var(--f-display); font-size: var(--t-lg); font-weight: 600; }
+.empty .acts { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+.quiet { border-top: 1px solid var(--rule); padding: 24px 4px; color: var(--ink-2); font-size: var(--t-sm); }
+
+/* Students */
+.stu-list { display: grid; }
+.stu { border-top: 1px solid var(--rule); padding: 14px 0; display: grid; gap: 6px; }
+.stu-head { display: flex; align-items: baseline; gap: 6px 8px; flex-wrap: wrap; }
+.stu-meta { font-size: var(--t-sm); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.stu-due { font-size: var(--t-sm); }
+.stu-due .owes { color: var(--due); font-weight: 700; }
+.stu-due .settled { color: var(--paid); font-weight: 700; }
+.stu-acts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+.stu.archived { opacity: .7; }
+.archived-head { border-top: 1px solid var(--rule); padding: 12px 0 0; font-size: var(--t-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); }
+
+/* Data & settings */
+.data-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 28px; border-top: 1px solid var(--rule); padding: 16px 0 14px; }
+.data-item { display: grid; gap: 6px; align-content: start; min-width: 0; }
+.data-label { font-size: var(--t-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); }
+.data-text { font-size: var(--t-sm); }
+.rate-line { display: flex; align-items: center; gap: 8px; font-size: var(--t-sm); }
+.rate-line input { width: 80px; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); font-family: var(--f-mono); }
+.hint { font-size: var(--t-sm); color: var(--ink-2); border-top: 1px solid var(--rule); padding: 12px 0 10px; max-width: 72ch; }
+
+/* Dialogs */
+dialog {
+  width: min(560px, calc(100vw - 32px)); max-height: calc(100dvh - 32px);
+  padding: 0; border: 1px solid var(--rule); border-radius: 14px;
+  background: var(--sheet); color: var(--ink);
+  box-shadow: 0 24px 60px -20px var(--shade);
+}
+dialog::backdrop { background: rgba(9, 13, 22, 0.5); }
+dialog form, dialog .sheet { display: grid; max-height: calc(100dvh - 34px); grid-template-rows: auto minmax(0, 1fr) auto; }
+.dlg-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 20px 6px; }
+.dlg-head h2 { font-size: var(--t-lg); font-weight: 600; }
+.x { background: none; border: 0; font-size: 24px; line-height: 1; width: 36px; height: 36px; border-radius: 8px; cursor: pointer; color: var(--ink-2); }
+.x:hover { background: var(--paper); color: var(--ink); }
+.fields { overflow-y: auto; padding: 8px 20px 12px; display: grid; gap: 14px; }
+.f { display: grid; gap: 6px; min-width: 0; border: 0; margin: 0; padding: 0; }
+.f > span, .f > legend { font-size: var(--t-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); padding: 0; }
+.f > legend { margin-bottom: 6px; }
+.field {
+  width: 100%; padding: 10px 12px; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper);
+  font-size: var(--t-md); min-width: 0;
+}
+.field:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: transparent; }
+textarea.field { resize: vertical; min-height: 72px; }
+.f-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.dur-line { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.dur-line .field { width: 92px; font-family: var(--f-mono); }
+.dur-line .unit { font-size: var(--t-sm); color: var(--ink-2); margin-right: 6px; }
+.seg {
+  border: 1px solid var(--rule); background: var(--sheet); border-radius: 8px; padding: 8px 12px; cursor: pointer;
+  font-family: var(--f-mono); font-size: var(--t-sm);
+}
+.seg[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.chip span { display: inline-block; padding: 6px 12px; border: 1px solid var(--rule); border-radius: 999px; font-size: var(--t-sm); background: var(--sheet); }
+.chip input:checked + span { background: var(--accent-soft); border-color: var(--accent); color: var(--ink); font-weight: 700; }
+.chip input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+.paid-row { align-items: end; }
+.paid-row .check { padding-bottom: 10px; font-size: var(--t-md); font-weight: 700; }
+.calc { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: var(--t-sm); background: var(--paper); border-radius: 8px; padding: 10px 12px; }
+.calc b { font-weight: 500; color: var(--accent); }
+.form-error { color: var(--danger); font-size: var(--t-sm); font-weight: 700; }
+.confirm-text { font-size: var(--t-md); }
+.dlg-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 14px 20px 18px; border-top: 1px solid var(--rule); }
+.dlg-foot .grow { flex: 1; }
+
+/* Toast */
+.toast {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  max-width: calc(100vw - 32px); width: max-content;
+  background: var(--ink); color: var(--paper); padding: 10px 16px; border-radius: 8px;
+  font-size: var(--t-sm); font-weight: 700; z-index: 20; box-shadow: 0 10px 30px -12px var(--shade);
+}
+.toast.err { background: var(--danger); color: #FFFFFF; }
+
+@media (max-width: 920px) {
+  .grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 720px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 18px; }
+  .month { padding: 16px 16px 18px; }
+  .month-nav h2 { font-size: var(--t-xl); }
+  .data-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .panel { padding: 14px 14px 6px; }
+  .row {
+    grid-template-columns: 40px minmax(0, 1fr) auto;
+    grid-template-areas: "date main pill" "date num edit";
+    gap: 8px 12px;
+  }
+  .r-num { justify-items: start; text-align: left; }
+  .r-day { font-size: 22px; }
+  .stat dd { font-size: 20px; }
+}
+@media (max-width: 360px) {
+  .f-row { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Phone: thumb-reach action bar and bottom-sheet forms */
+.mobile-bar { display: none; }
+@media (max-width: 640px) {
+  .top .actions { display: none; }
+  .wrap { padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px)); }
+  .mobile-bar {
+    display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 15;
+    padding-top: 10px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    background: var(--sheet); border-top: 1px solid var(--rule);
+    box-shadow: 0 -10px 24px -20px var(--shade);
+  }
+  .mobile-bar .btn { flex: 1; justify-content: center; min-height: 52px; font-size: var(--t-md); }
+  .toast { bottom: calc(88px + env(safe-area-inset-bottom, 0px)); }
+  dialog {
+    width: 100%; max-width: 100%; margin: auto 0 0; max-height: 92dvh;
+    border-radius: 18px 18px 0 0; border-bottom: 0;
+  }
+  dialog[open] { animation: sheet-up .22s ease-out; }
+  dialog form, dialog .sheet { max-height: 92dvh; }
+  .dlg-head { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(12px, env(safe-area-inset-right, 0px)); }
+  .fields { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+  .dlg-foot {
+    padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+  }
+  .dlg-foot .btn { min-height: 48px; }
+  .dlg-foot .grow { display: none; }
+  .dlg-foot .btn.primary { flex: 1 1 auto; justify-content: center; }
+  .dur-line { flex-wrap: nowrap; }
+  .dur-line .seg { flex: 1 1 0; min-width: 0; padding-inline: 4px; }
+  .dur-line .field { width: 68px; flex: none; padding-inline: 10px; }
+  .dur-line .unit { margin-right: 0; }
+}
+@keyframes sheet-up { from { transform: translateY(24px); opacity: .6; } to { transform: none; opacity: 1; } }
+@media (pointer: coarse) {
+  .pill { min-height: 40px; min-width: 88px; }
+  .icon-btn { min-height: 40px; min-width: 48px; }
+  .arrow { width: 44px; height: 44px; }
+  .btn.small { min-height: 40px; padding: 8px 14px; font-size: var(--t-sm); }
+  .select-sm { min-height: 40px; }
+  .check input { width: 20px; height: 20px; }
+  .chip span { padding: 9px 14px; }
+  .seg { min-height: 44px; min-width: 56px; }
+  .x { width: 44px; height: 44px; }
+  .today-link { padding: 10px 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Tutoring Ledger</h1>
+      <p class="sub">IB Mathematics sessions, hours and payments</p>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn ghost" id="btn-add-student-top">Add student</button>
+      <button type="button" class="btn primary" id="btn-log"><span class="plus" aria-hidden="true">+</span> Log session</button>
+    </div>
+  </header>
+
+  <div class="notice" id="notice" role="status" hidden></div>
+
+  <div class="banner" id="install-banner" hidden>
+    <p>Install Tutoring Ledger on this device to get a home-screen icon and use it offline.</p>
+    <div class="acts">
+      <button type="button" class="btn small primary" id="btn-install">Install app</button>
+      <button type="button" class="btn small ghost" id="btn-install-later">Not now</button>
+    </div>
+  </div>
+
+  <div class="banner" id="example-banner" hidden>
+    <p>These are example entries so you can see how the ledger works. Clear them before you log your own students.</p>
+    <div class="acts"><button type="button" class="btn small" id="btn-clear-ex">Clear examples</button></div>
+  </div>
+
+  <div class="banner warn" id="backup-banner" hidden>
+    <p id="backup-banner-text">Your entries are only on this phone. Save a backup so you don't lose them.</p>
+    <div class="acts"><button type="button" class="btn small" id="btn-backup-banner">Back up now</button></div>
+  </div>
+
+  <section class="month" aria-labelledby="month-label">
+    <div class="month-nav">
+      <h2 id="month-label">Month</h2>
+      <div class="arrows">
+        <button type="button" class="arrow" id="prev" aria-label="Previous month">&#8249;</button>
+        <button type="button" class="arrow" id="next" aria-label="Next month">&#8250;</button>
+      </div>
+      <button type="button" class="today-link" id="to-today" hidden>Back to this month</button>
+    </div>
+    <dl class="stats">
+      <div class="stat"><dt>Hours taught</dt><dd id="st-hours">—</dd><span class="meta" id="st-hours-meta">&nbsp;</span></div>
+      <div class="stat"><dt>Earned</dt><dd id="st-earned">—</dd><span class="meta">value of this month's sessions</span></div>
+      <div class="stat"><dt>Received</dt><dd id="st-received">—</dd><span class="meta" id="st-received-meta">&nbsp;</span></div>
+      <div class="stat due" id="st-due-wrap"><dt>Outstanding</dt><dd id="st-due">—</dd><span class="meta" id="st-due-meta">&nbsp;</span></div>
+    </dl>
+  </section>
+
+  <main class="grid">
+    <section class="panel" aria-labelledby="h-sessions">
+      <div class="panel-head">
+        <h3 id="h-sessions">Sessions</h3>
+        <div class="filters">
+          <select class="select-sm" id="f-student" aria-label="Filter by student"><option value="">All students</option></select>
+          <label class="check"><input type="checkbox" id="f-unpaid"> Unpaid only</label>
+          <button type="button" class="btn small ghost" id="btn-csv" hidden>Export month (CSV)</button>
+        </div>
+      </div>
+      <div id="sessions"><p class="quiet">Loading your sessions…</p></div>
+    </section>
+
+    <aside class="panel" aria-labelledby="h-students">
+      <div class="panel-head">
+        <h3 id="h-students">Students</h3>
+        <button type="button" class="btn small ghost" id="btn-add-student">Add student</button>
+      </div>
+      <div id="students"><p class="quiet">Loading students…</p></div>
+    </aside>
+  </main>
+
+  <section class="panel" aria-labelledby="h-data">
+    <div class="panel-head"><h3 id="h-data">Data &amp; settings</h3></div>
+    <div class="data-grid">
+      <div class="data-item">
+        <p class="data-label">Backup</p>
+        <p class="data-text" id="backup-status">No backup yet</p>
+        <div class="stu-acts">
+          <button type="button" class="btn small" id="btn-backup">Back up</button>
+          <button type="button" class="btn small ghost" id="btn-restore">Restore from file</button>
+          <input type="file" id="restore-file" accept="application/json,.json" hidden>
+        </div>
+      </div>
+      <div class="data-item">
+        <label class="data-label" for="tax-rate">Ryczałt rate</label>
+        <div class="rate-line"><input id="tax-rate" type="text" inputmode="decimal" autocomplete="off" value="8,5"> % of money received each month</div>
+      </div>
+    </div>
+    <p class="hint">Your entries are stored only on this device, so back up now and then and keep the file somewhere safe, like Google Drive or your email. Each session keeps the rate it was logged at, so changing a student's rate doesn't rewrite past sessions. The ryczałt figure is an estimate.</p>
+  </section>
+</div>
+
+<div class="mobile-bar" id="mobile-bar">
+  <button type="button" class="btn primary" id="btn-log-m"><span class="plus" aria-hidden="true">+</span> Log session</button>
+</div>
+
+<dialog id="dlg-session" aria-labelledby="ds-title">
+  <form id="form-session" novalidate>
+    <div class="dlg-head">
+      <h2 id="ds-title">Log session</h2>
+      <button type="button" class="x" data-close aria-label="Close">&times;</button>
+    </div>
+    <div class="fields">
+      <label class="f"><span>Student</span><select class="field" id="s-student" required></select></label>
+      <div class="f-row">
+        <label class="f"><span>Date</span><input class="field" id="s-date" type="date" required></label>
+        <label class="f"><span>Rate (zł / h)</span><input class="field num" id="s-rate" type="text" inputmode="decimal" autocomplete="off" required></label>
+      </div>
+      <fieldset class="f">
+        <legend>Duration</legend>
+        <div class="dur-line" id="s-dur">
+          <input class="field" id="s-minutes" type="text" inputmode="numeric" autocomplete="off" required aria-label="Minutes"><span class="unit">min</span>
+        </div>
+      </fieldset>
+      <fieldset class="f">
+        <legend>Topics covered</legend>
+        <div class="chips" id="s-topics"></div>
+      </fieldset>
+      <label class="f"><span>Notes</span><textarea class="field" id="s-notes" rows="3" placeholder="What you covered, homework set, what to revisit next time"></textarea></label>
+      <div class="f-row paid-row">
+        <label class="check"><input type="checkbox" id="s-paid"> Paid</label>
+        <label class="f" id="s-paidon-wrap"><span>Paid on</span><input class="field" id="s-paidon" type="date"></label>
+      </div>
+      <p class="calc" id="s-calc"></p>
+      <p class="form-error" id="s-error" hidden></p>
+    </div>
+    <div class="dlg-foot">
+      <button type="button" class="btn danger" id="s-delete" hidden>Delete</button>
+      <span class="grow"></span>
+      <button type="button" class="btn ghost" data-close>Cancel</button>
+      <button type="submit" class="btn primary" id="s-save">Save session</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="dlg-student" aria-labelledby="dst-title">
+  <form id="form-student" novalidate>
+    <div class="dlg-head">
+      <h2 id="dst-title">Add student</h2>
+      <button type="button" class="x" data-close aria-label="Close">&times;</button>
+    </div>
+    <div class="fields">
+      <label class="f"><span>Name</span><input class="field" id="t-name" type="text" autocomplete="off" required placeholder="e.g. Zofia N."></label>
+      <div class="f-row">
+        <label class="f"><span>Course</span><select class="field" id="t-course"></select></label>
+        <label class="f"><span>Hourly rate (zł)</span><input class="field num" id="t-rate" type="text" inputmode="decimal" autocomplete="off" required placeholder="150"></label>
+      </div>
+      <label class="f"><span>Contact (optional)</span><input class="field" id="t-contact" type="text" autocomplete="off" placeholder="Parent's phone or email"></label>
+      <label class="f"><span>Notes (optional)</span><textarea class="field" id="t-notes" rows="2" placeholder="Exam session, goals, usual day"></textarea></label>
+      <label class="check" id="t-active-wrap"><input type="checkbox" id="t-active" checked> Active (untick to archive)</label>
+      <p class="form-error" id="t-error" hidden></p>
+    </div>
+    <div class="dlg-foot">
+      <button type="button" class="btn danger" id="t-delete" hidden>Delete</button>
+      <span class="grow"></span>
+      <button type="button" class="btn ghost" data-close>Cancel</button>
+      <button type="submit" class="btn primary" id="t-save">Save student</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="dlg-restore" aria-labelledby="dr-title">
+  <div class="sheet">
+    <div class="dlg-head">
+      <h2 id="dr-title">Restore from backup?</h2>
+      <button type="button" class="x" data-close aria-label="Close">&times;</button>
+    </div>
+    <div class="fields"><p class="confirm-text" id="restore-text"></p></div>
+    <div class="dlg-foot">
+      <span class="grow"></span>
+      <button type="button" class="btn ghost" data-close>Cancel</button>
+      <button type="button" class="btn primary" id="btn-restore-confirm">Replace my data</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function () {
+  "use strict";
+
+  var KEY = "tutoring-ledger:v1";
+  var COURSES = ["AA HL", "AA SL", "AI HL", "AI SL", "MYP", "Other"];
+  var TOPICS = ["Number & algebra", "Functions", "Geometry & trig", "Stats & probability", "Calculus", "Exam practice", "IA support", "GDC skills"];
+  var DURATIONS = [45, 60, 90, 120];
+
+  var S = {
+    students: new Map(), sessions: new Map(),
+    settings: { taxRate: 8.5 }, lastBackup: null,
+    storageOk: true, loaded: false,
+    month: monthKey(new Date()),
+    fStudent: "", fUnpaid: false
+  };
+  var editing = { session: null, student: null };
+  var pendingRestore = null;
+
+  /* ---------- helpers ---------- */
+  function $(id) { return document.getElementById(id); }
+  function pad(n) { return String(n).padStart(2, "0"); }
+  function monthKey(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1); }
+  function todayStr() { var d = new Date(); return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
+  function parseDate(s) { var p = String(s || "").split("-").map(Number); return new Date(p[0], (p[1] || 1) - 1, p[2] || 1); }
+  function shiftMonth(key, delta) { var p = key.split("-").map(Number); return monthKey(new Date(p[0], p[1] - 1 + delta, 1)); }
+  function monthLabel(key) { var p = key.split("-").map(Number); return new Date(p[0], p[1] - 1, 1).toLocaleDateString("en-GB", { month: "long", year: "numeric" }); }
+  function monthName(key) { var p = key.split("-").map(Number); return new Date(p[0], p[1] - 1, 1).toLocaleDateString("en-GB", { month: "long" }); }
+  function fmtDate(s) { return s ? parseDate(s).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) : ""; }
+  function fmtDay(s) { return s ? parseDate(s).toLocaleDateString("en-GB", { day: "numeric", month: "short" }) : ""; }
+  var zl = new Intl.NumberFormat("pl-PL", { style: "currency", currency: "PLN" });
+  var dec = new Intl.NumberFormat("pl-PL", { maximumFractionDigits: 2 });
+  function money(v) { return zl.format(v || 0); }
+  function hrs(min) { return dec.format((min || 0) / 60) + " h"; }
+  function amountOf(s) { return Math.round((Number(s.rate) || 0) * (Number(s.minutes) || 0) / 60 * 100) / 100; }
+  function plural(n, one, many) { return n + " " + (n === 1 ? one : many); }
+  function esc(v) {
+    return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function byName(a, b) { return String(a.name || "").localeCompare(String(b.name || ""), "pl"); }
+  function bySessionDesc(a, b) {
+    if (a.date !== b.date) return a.date < b.date ? 1 : -1;
+    return String(b.createdAt || "").localeCompare(String(a.createdAt || ""));
+  }
+  function taxRate() { var r = Number(S.settings.taxRate); return isFinite(r) && r >= 0 ? r : 8.5; }
+  // Accepts "162,5" or "162.5": the Samsung/Polish keyboard gives a comma.
+  function num(v) {
+    var s = String(v == null ? "" : v).trim().replace(/\s/g, "").replace(",", ".");
+    return s === "" ? NaN : Number(s);
+  }
+  function numStr(v) { return v == null || v === "" ? "" : String(v).replace(".", ","); }
+  function uid() {
+    if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+    return Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 10);
+  }
+  function lastMinutes(studentId) {
+    var last = Array.from(S.sessions.values()).filter(function (s) { return s.studentId === studentId; }).sort(bySessionDesc)[0];
+    return last && Number(last.minutes) > 0 ? Number(last.minutes) : 60;
+  }
+  function daysSince(iso) { return Math.floor((Date.now() - new Date(iso).getTime()) / 86400000); }
+
+  /* ---------- storage (on this device) ---------- */
+  function exampleData() {
+    function st(id, name, course, rate, notes, created) {
+      return { id: id, name: name, course: course, rate: rate, contact: "", notes: notes, active: true, example: true, createdAt: created, updatedAt: created };
+    }
+    function se(id, sid, date, min, rate, topics, notes, paidOn) {
+      var t = date + "T17:00:00.000Z";
+      return { id: id, studentId: sid, date: date, minutes: min, rate: rate, topics: topics, notes: notes, paid: !!paidOn, paidOn: paidOn || null, example: true, createdAt: t, updatedAt: t };
+    }
+    return {
+      students: [
+        st("ex-zofia", "Zofia N.", "AA HL", 160, "Example student. Paper 3 prep and an IA on optimisation.", "2026-09-01T10:00:00.000Z"),
+        st("ex-leo", "Leo M.", "AI SL", 130, "Example student. Weekly on Tuesdays.", "2026-09-01T10:05:00.000Z")
+      ],
+      sessions: [
+        se("ex-s1", "ex-zofia", "2026-09-24", 90, 160, ["Calculus"], "Related rates and optimisation from past papers.", "2026-09-30"),
+        se("ex-s2", "ex-leo", "2026-09-29", 60, 130, ["Stats & probability", "GDC skills"], "Binomial vs normal distribution on the GDC.", "2026-09-30"),
+        se("ex-s3", "ex-zofia", "2026-10-01", 90, 160, ["Calculus", "IA support"], "IA draft feedback: model choice and domain.", "2026-10-08"),
+        se("ex-s4", "ex-leo", "2026-10-06", 60, 130, ["Functions", "GDC skills"], "Exponential models, finding intersections on the GDC.", "2026-10-13"),
+        se("ex-s5", "ex-zofia", "2026-10-08", 90, 160, ["Geometry & trig"], "Compound angle identities, ambiguous case of the sine rule.", "2026-10-15"),
+        se("ex-s6", "ex-leo", "2026-10-13", 60, 130, ["Stats & probability"], "Chi-squared test of independence.", null),
+        se("ex-s7", "ex-zofia", "2026-10-15", 120, 160, ["Exam practice"], "Mock Paper 1 under timed conditions.", null),
+        se("ex-s8", "ex-leo", "2026-10-20", 60, 130, ["Number & algebra"], "Loans and annuities with the TVM solver.", null)
+      ],
+      settings: { taxRate: 8.5 },
+      lastBackup: null
+    };
+  }
+  function snapshot() {
+    return {
+      app: "tutoring-ledger", version: 1,
+      students: Array.from(S.students.values()),
+      sessions: Array.from(S.sessions.values()),
+      settings: Object.assign({}, S.settings),
+      lastBackup: S.lastBackup
+    };
+  }
+  function validStudent(s) { return s && typeof s.id === "string" && s.id && typeof s.name === "string"; }
+  function validSession(s) { return s && typeof s.id === "string" && s.id && typeof s.studentId === "string" && /^\d{4}-\d{2}-\d{2}$/.test(String(s.date || "")); }
+  function applyData(data) {
+    S.students = new Map((data.students || []).filter(validStudent).map(function (s) { return [s.id, s]; }));
+    S.sessions = new Map((data.sessions || []).filter(validSession).map(function (s) { return [s.id, s]; }));
+    S.settings = Object.assign({ taxRate: 8.5 }, data.settings || {});
+    S.lastBackup = data.lastBackup || null;
+  }
+  function persist() {
+    try { localStorage.setItem(KEY, JSON.stringify(snapshot())); return true; }
+    catch (e) { return false; }
+  }
+  // Every change goes through here: apply it, save it, and undo it if saving fails.
+  function commit(mutate, okMsg) {
+    var before = snapshot();
+    mutate();
+    if (!persist()) {
+      applyData(before);
+      render();
+      toast("Couldn't save on this device. Free up some storage and try again.", true);
+      return false;
+    }
+    render();
+    if (okMsg) toast(okMsg);
+    return true;
+  }
+  function load() {
+    var raw = null;
+    try { raw = localStorage.getItem(KEY); }
+    catch (e) { S.storageOk = false; }
+    if (raw) {
+      try { applyData(JSON.parse(raw)); S.loaded = true; return; }
+      catch (e) {
+        try { localStorage.setItem(KEY + ":unreadable-" + Date.now(), raw); } catch (e2) {}
+        notice("Saved data on this device couldn't be read, so the ledger started fresh. A copy of the old data was kept. Restore from a backup file if you have one.");
+      }
+    }
+    applyData(exampleData());
+    if (S.storageOk && !persist()) S.storageOk = false;
+    S.loaded = true;
+  }
+  window.addEventListener("storage", function (e) {
+    if (e.key !== KEY || !e.newValue) return;
+    try { applyData(JSON.parse(e.newValue)); render(); } catch (err) {}
+  });
+
+  /* ---------- toast & notice ---------- */
+  var toastTimer = null;
+  function toast(msg, isErr) {
+    var t = $("toast");
+    t.textContent = msg;
+    t.className = "toast" + (isErr ? " err" : "");
+    t.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.hidden = true; }, isErr ? 5200 : 2600);
+  }
+  function notice(text) { var n = $("notice"); n.textContent = text; n.hidden = !text; }
+
+  /* ---------- render ---------- */
+  function render() {
+    $("month-label").textContent = monthLabel(S.month);
+    $("to-today").hidden = S.month === monthKey(new Date());
+
+    var all = Array.from(S.sessions.values());
+    var inMonth = all.filter(function (s) { return String(s.date || "").indexOf(S.month) === 0; });
+    var mins = inMonth.reduce(function (a, s) { return a + (Number(s.minutes) || 0); }, 0);
+    var earned = inMonth.reduce(function (a, s) { return a + amountOf(s); }, 0);
+    var received = all.filter(function (s) { return s.paid && String(s.paidOn || "").indexOf(S.month) === 0; })
+      .reduce(function (a, s) { return a + amountOf(s); }, 0);
+    var unpaid = all.filter(function (s) { return !s.paid; });
+    var due = unpaid.reduce(function (a, s) { return a + amountOf(s); }, 0);
+    var r = taxRate();
+
+    $("st-hours").textContent = hrs(mins);
+    $("st-hours-meta").textContent = plural(inMonth.length, "session", "sessions");
+    $("st-earned").textContent = money(earned);
+    $("st-received").textContent = money(received);
+    $("st-received-meta").textContent = "ryczałt " + dec.format(r) + "% ≈ " + money(received * r / 100);
+    $("st-due").textContent = money(due);
+    $("st-due-meta").textContent = unpaid.length ? plural(unpaid.length, "unpaid session", "unpaid sessions") + ", all months" : "everything is paid";
+    $("st-due-wrap").classList.toggle("clear", !unpaid.length);
+
+    var hasExamples = all.some(function (s) { return s.example; }) ||
+      Array.from(S.students.values()).some(function (s) { return s.example; });
+    $("example-banner").hidden = !hasExamples;
+
+    // Backup status and reminder
+    var real = all.filter(function (s) { return !s.example; }).length;
+    $("backup-status").textContent = S.lastBackup
+      ? "Last backup " + fmtDate(S.lastBackup.slice(0, 10)) + (daysSince(S.lastBackup) > 0 ? " (" + plural(daysSince(S.lastBackup), "day", "days") + " ago)" : " (today)")
+      : (real ? "No backup yet" : "Nothing to back up yet");
+    var stale = real >= 5 && (!S.lastBackup || daysSince(S.lastBackup) >= 14);
+    $("backup-banner").hidden = !stale;
+    if (stale) {
+      $("backup-banner-text").textContent = S.lastBackup
+        ? "Your last backup was " + plural(daysSince(S.lastBackup), "day", "days") + " ago. Your entries are only on this device, so save a fresh copy."
+        : "You have " + plural(real, "session", "sessions") + " saved only on this device. Save a backup so a lost or reset phone doesn't take them with it.";
+    }
+
+    var tr = $("tax-rate");
+    if (document.activeElement !== tr) tr.value = numStr(r);
+    $("btn-csv").hidden = !inMonth.length;
+
+    renderFilter();
+    renderSessions(inMonth);
+    renderStudents();
+  }
+
+  function renderFilter() {
+    var sel = $("f-student");
+    var list = Array.from(S.students.values()).sort(byName);
+    if (S.fStudent && !S.students.has(S.fStudent)) S.fStudent = "";
+    var html = '<option value="">All students</option>' + list.map(function (st) {
+      return '<option value="' + esc(st.id) + '">' + esc(st.name) + "</option>";
+    }).join("");
+    if (sel.innerHTML !== html) sel.innerHTML = html;
+    sel.value = S.fStudent;
+  }
+
+  function renderSessions(inMonth) {
+    var box = $("sessions");
+    var list = inMonth.filter(function (s) {
+      return (!S.fStudent || s.studentId === S.fStudent) && (!S.fUnpaid || !s.paid);
+    }).sort(bySessionDesc);
+
+    if (!S.students.size && !S.sessions.size) {
+      box.innerHTML = '<div class="empty"><strong>Start with your first student</strong>' +
+        "<p>Add each student once with their hourly rate. After every lesson, log the session and tick it paid when the money arrives.</p>" +
+        '<div class="acts"><button type="button" class="btn primary" data-act="add-student">Add student</button></div></div>';
+      return;
+    }
+    if (!list.length) {
+      var why = inMonth.length ? "No sessions match these filters." : "No sessions logged for " + monthLabel(S.month) + " yet.";
+      box.innerHTML = '<div class="empty"><strong>' + esc(why) + "</strong>" +
+        (inMonth.length ? "" : '<div class="acts"><button type="button" class="btn primary" data-act="log">Log a session</button></div>') + "</div>";
+      return;
+    }
+    box.innerHTML = '<div class="rows">' + list.map(sessionRow).join("") + "</div>";
+  }
+
+  function sessionRow(s) {
+    var st = S.students.get(s.studentId);
+    var d = parseDate(s.date);
+    var name = st ? st.name : "Deleted student";
+    var course = st && st.course ? '<span class="course">' + esc(st.course) + "</span>" : "";
+    var ex = s.example ? '<span class="tag-ex">example</span>' : "";
+    var topics = (Array.isArray(s.topics) ? s.topics : []).map(function (t) { return '<span class="topic">' + esc(t) + "</span>"; }).join("");
+    var pillTitle = s.paid ? "Paid" + (s.paidOn ? " on " + fmtDay(s.paidOn) : "") + ". Tap to mark unpaid." : "Tap to mark paid today.";
+    return '<article class="row">' +
+      '<div class="r-date"><span class="r-day">' + d.getDate() + '</span><span class="r-wd">' + esc(d.toLocaleDateString("en-GB", { weekday: "short" })) + "</span></div>" +
+      '<div class="r-main"><div class="r-title"><span class="r-name">' + esc(name) + "</span>" + course + ex + "</div>" +
+      (topics ? '<div class="r-topics">' + topics + "</div>" : "") +
+      (s.notes ? '<p class="r-notes">' + esc(s.notes) + "</p>" : "") + "</div>" +
+      '<div class="r-num"><span class="r-amt">' + money(amountOf(s)) + '</span><span class="r-dur">' + esc(s.minutes) + " min · " + esc(dec.format(Number(s.rate) || 0)) + " zł/h</span></div>" +
+      '<button type="button" class="pill ' + (s.paid ? "paid" : "due") + '" data-act="toggle" data-id="' + esc(s.id) + '" aria-pressed="' + (s.paid ? "true" : "false") + '" title="' + esc(pillTitle) + '">' + (s.paid ? "Paid" : "Unpaid") + "</button>" +
+      '<button type="button" class="icon-btn" data-act="edit" data-id="' + esc(s.id) + '" aria-label="Edit session with ' + esc(name) + " on " + esc(fmtDay(s.date)) + '">Edit</button>' +
+      "</article>";
+  }
+
+  function renderStudents() {
+    var box = $("students");
+    var list = Array.from(S.students.values()).sort(byName);
+    if (!list.length) { box.innerHTML = '<p class="quiet">No students yet. Add one to start logging sessions.</p>'; return; }
+    var sessions = Array.from(S.sessions.values());
+    var active = list.filter(function (s) { return s.active !== false; });
+    var archived = list.filter(function (s) { return s.active === false; });
+    var mName = monthName(S.month);
+    function card(st) {
+      var mine = sessions.filter(function (s) { return s.studentId === st.id; });
+      var monthMine = mine.filter(function (s) { return String(s.date || "").indexOf(S.month) === 0; });
+      var monthMin = monthMine.reduce(function (a, s) { return a + (Number(s.minutes) || 0); }, 0);
+      var owed = mine.filter(function (s) { return !s.paid; });
+      var owedAmt = owed.reduce(function (a, s) { return a + amountOf(s); }, 0);
+      var sid = esc(st.id), sname = esc(st.name);
+      return '<div class="stu' + (st.active === false ? " archived" : "") + '">' +
+        '<div class="stu-head"><span class="r-name">' + sname + "</span>" +
+        (st.course ? '<span class="course">' + esc(st.course) + "</span>" : "") +
+        (st.example ? '<span class="tag-ex">example</span>' : "") + "</div>" +
+        '<div class="stu-meta">' + esc(dec.format(Number(st.rate) || 0)) + " zł/h · " +
+        (monthMine.length ? plural(monthMine.length, "session", "sessions") + ", " + hrs(monthMin) + " in " + esc(mName) : "no sessions in " + esc(mName)) + "</div>" +
+        '<div class="stu-due">' + (owed.length
+          ? '<span class="owes">Owes ' + money(owedAmt) + " · " + plural(owed.length, "session", "sessions") + "</span>"
+          : '<span class="settled">All paid</span>') + "</div>" +
+        '<div class="stu-acts">' +
+          (st.active !== false ? '<button type="button" class="btn small" data-act="log-student" data-id="' + sid + '" aria-label="Log a session for ' + sname + '"><span class="plus" aria-hidden="true">+</span> Log</button>' : "") +
+          (owed.length ? '<button type="button" class="btn small" data-act="settle" data-id="' + sid + '">Mark all paid</button>' : "") +
+          '<button type="button" class="btn small ghost" data-act="edit-student" data-id="' + sid + '" aria-label="Edit ' + sname + '">Edit</button>' +
+        "</div></div>";
+    }
+    box.innerHTML = '<div class="stu-list">' + active.map(card).join("") +
+      (archived.length ? '<p class="archived-head">Archived</p>' + archived.map(card).join("") : "") + "</div>";
+  }
+
+  /* ---------- session dialog ---------- */
+  (function buildStaticControls() {
+    $("s-topics").innerHTML = TOPICS.map(function (t, i) {
+      return '<label class="chip"><input type="checkbox" value="' + esc(t) + '" id="topic-' + i + '"><span>' + esc(t) + "</span></label>";
+    }).join("");
+    var durLine = $("s-dur");
+    var first = durLine.firstChild;
+    DURATIONS.forEach(function (m) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "seg"; b.dataset.min = String(m); b.textContent = String(m);
+      b.setAttribute("aria-pressed", "false"); b.setAttribute("aria-label", m + " minutes");
+      durLine.insertBefore(b, first);
+    });
+    $("t-course").innerHTML = COURSES.map(function (c) { return '<option value="' + esc(c) + '">' + esc(c) + "</option>"; }).join("");
+  })();
+
+  function syncDur() {
+    var m = num($("s-minutes").value);
+    document.querySelectorAll("#s-dur .seg").forEach(function (b) { b.setAttribute("aria-pressed", String(Number(b.dataset.min) === m)); });
+  }
+  function updateCalc() {
+    var m = num($("s-minutes").value) || 0, r = num($("s-rate").value) || 0;
+    var amt = Math.round(r * m / 60 * 100) / 100;
+    $("s-calc").innerHTML = esc(m) + " min × " + esc(dec.format(r)) + " zł/h = <b>" + esc(money(amt)) + "</b>";
+  }
+  function syncPaid() {
+    var p = $("s-paid").checked;
+    $("s-paidon-wrap").hidden = !p;
+    if (p && !$("s-paidon").value) $("s-paidon").value = todayStr();
+  }
+  function resetArm(btn, label) { btn.dataset.armed = ""; btn.textContent = label; }
+  function arm(btn, label, resetLabel) {
+    if (btn.dataset.armed) return true;
+    btn.dataset.armed = "1"; btn.textContent = label;
+    setTimeout(function () { if (btn.dataset.armed) resetArm(btn, resetLabel); }, 4000);
+    return false;
+  }
+
+  function openSession(id, presetStudent) {
+    var active = Array.from(S.students.values()).filter(function (st) { return st.active !== false; }).sort(byName);
+    if (!id && !active.length) { toast("Add a student first, then log their sessions."); openStudent(); return; }
+    var s = id ? S.sessions.get(id) : null;
+    if (id && !s) return;
+    editing.session = id || null;
+    var opts = active.slice();
+    if (s && S.students.get(s.studentId) && !opts.some(function (o) { return o.id === s.studentId; })) opts.push(S.students.get(s.studentId));
+    var sel = $("s-student");
+    sel.innerHTML = opts.map(function (o) { return '<option value="' + esc(o.id) + '">' + esc(o.name) + (o.course ? " · " + esc(o.course) : "") + "</option>"; }).join("");
+    function has(x) { return x && opts.some(function (o) { return o.id === x; }); }
+    var pick = s ? s.studentId : has(presetStudent) ? presetStudent : has(S.fStudent) ? S.fStudent : opts[0].id;
+    sel.value = pick;
+    var st = S.students.get(pick);
+    $("s-date").value = s ? s.date : todayStr();
+    $("s-rate").value = s ? numStr(s.rate) : (st && st.rate != null ? numStr(st.rate) : "");
+    $("s-minutes").value = s ? s.minutes : lastMinutes(pick);
+    var topics = s && Array.isArray(s.topics) ? s.topics : [];
+    document.querySelectorAll("#s-topics input").forEach(function (c) { c.checked = topics.indexOf(c.value) !== -1; });
+    $("s-notes").value = s ? (s.notes || "") : "";
+    $("s-paid").checked = !!(s && s.paid);
+    $("s-paidon").value = s && s.paidOn ? s.paidOn : "";
+    $("ds-title").textContent = s ? "Edit session" : "Log session";
+    $("s-save").textContent = s ? "Save changes" : "Save session";
+    $("s-delete").hidden = !s;
+    resetArm($("s-delete"), "Delete");
+    $("s-error").hidden = true;
+    syncPaid(); syncDur(); updateCalc();
+    $("dlg-session").showModal();
+  }
+
+  function saveSession(e) {
+    e.preventDefault();
+    var err = $("s-error");
+    var studentId = $("s-student").value;
+    var date = $("s-date").value;
+    var minutes = Math.round(num($("s-minutes").value));
+    var rate = num($("s-rate").value);
+    var msg = !studentId ? "Choose a student." : !/^\d{4}-\d{2}-\d{2}$/.test(date) ? "Enter the date of the session." :
+      !(minutes > 0) ? "Enter how many minutes the session lasted." : !(rate >= 0) ? "Enter the hourly rate in zł, for example 150 or 162,5." : "";
+    if (msg) { err.textContent = msg; err.hidden = false; return; }
+    err.hidden = true;
+    var prev = editing.session ? S.sessions.get(editing.session) : null;
+    var paid = $("s-paid").checked;
+    var id = editing.session || uid();
+    var body = {
+      id: id, studentId: studentId, date: date, minutes: minutes, rate: rate,
+      topics: Array.from(document.querySelectorAll("#s-topics input:checked")).map(function (c) { return c.value; }),
+      notes: $("s-notes").value.trim(),
+      paid: paid, paidOn: paid ? ($("s-paidon").value || todayStr()) : null,
+      example: !!(prev && prev.example),
+      createdAt: (prev && prev.createdAt) || new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+    var ok = commit(function () {
+      S.sessions.set(id, body);
+      if (date.slice(0, 7) !== S.month) S.month = date.slice(0, 7);
+    }, prev ? "Session updated" : "Session logged · " + money(amountOf(body)));
+    if (ok) $("dlg-session").close();
+  }
+
+  function deleteSession() {
+    var btn = $("s-delete");
+    if (!arm(btn, "Tap again to delete", "Delete")) return;
+    var id = editing.session;
+    if (commit(function () { S.sessions.delete(id); }, "Session deleted")) $("dlg-session").close();
+  }
+
+  /* ---------- student dialog ---------- */
+  function openStudent(id) {
+    var st = id ? S.students.get(id) : null;
+    if (id && !st) return;
+    editing.student = id || null;
+    $("t-name").value = st ? st.name : "";
+    $("t-course").value = st && st.course ? st.course : "AA HL";
+    $("t-rate").value = st && st.rate != null ? numStr(st.rate) : "";
+    $("t-contact").value = st ? (st.contact || "") : "";
+    $("t-notes").value = st ? (st.notes || "") : "";
+    $("t-active").checked = !st || st.active !== false;
+    $("t-active-wrap").hidden = !st;
+    $("dst-title").textContent = st ? "Edit student" : "Add student";
+    $("t-save").textContent = st ? "Save changes" : "Save student";
+    $("t-delete").hidden = !st;
+    resetArm($("t-delete"), "Delete");
+    $("t-error").hidden = true;
+    $("dlg-student").showModal();
+    if (!st) setTimeout(function () { $("t-name").focus(); }, 0);
+  }
+
+  function saveStudent(e) {
+    e.preventDefault();
+    var err = $("t-error");
+    var name = $("t-name").value.trim();
+    var rate = num($("t-rate").value);
+    var msg = !name ? "Enter the student's name." : !(rate >= 0) ? "Enter the hourly rate in zł, for example 150 or 162,5." : "";
+    if (msg) { err.textContent = msg; err.hidden = false; return; }
+    err.hidden = true;
+    var prev = editing.student ? S.students.get(editing.student) : null;
+    var id = editing.student || uid();
+    var body = {
+      id: id, name: name, course: $("t-course").value, rate: rate,
+      contact: $("t-contact").value.trim(), notes: $("t-notes").value.trim(),
+      active: prev ? $("t-active").checked : true,
+      example: !!(prev && prev.example),
+      createdAt: (prev && prev.createdAt) || new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+    if (commit(function () { S.students.set(id, body); }, prev ? "Student updated" : name + " added")) $("dlg-student").close();
+  }
+
+  function deleteStudent() {
+    var id = editing.student;
+    var count = Array.from(S.sessions.values()).filter(function (s) { return s.studentId === id; }).length;
+    var err = $("t-error");
+    if (count) {
+      err.textContent = (S.students.get(id) || {}).name + " has " + plural(count, "logged session", "logged sessions") + ". Untick Active to archive instead, or delete those sessions first.";
+      err.hidden = false;
+      return;
+    }
+    if (!arm($("t-delete"), "Tap again to delete", "Delete")) return;
+    if (commit(function () { S.students.delete(id); }, "Student deleted")) $("dlg-student").close();
+  }
+
+  /* ---------- row actions ---------- */
+  function togglePaid(id) {
+    var s = S.sessions.get(id); if (!s) return;
+    var next = !s.paid;
+    commit(function () {
+      S.sessions.set(id, Object.assign({}, s, { paid: next, paidOn: next ? todayStr() : null, updatedAt: new Date().toISOString() }));
+    });
+  }
+  function settleStudent(id) {
+    var owed = Array.from(S.sessions.values()).filter(function (s) { return s.studentId === id && !s.paid; });
+    if (!owed.length) return;
+    var today = todayStr(), now = new Date().toISOString();
+    commit(function () {
+      owed.forEach(function (s) { S.sessions.set(s.id, Object.assign({}, s, { paid: true, paidOn: today, updatedAt: now })); });
+    }, plural(owed.length, "session", "sessions") + " marked paid");
+  }
+  function clearExamples(btn) {
+    if (!arm(btn, "Tap again to clear", "Clear examples")) return;
+    resetArm(btn, "Clear examples");
+    commit(function () {
+      Array.from(S.sessions.values()).forEach(function (s) { if (s.example) S.sessions.delete(s.id); });
+      Array.from(S.students.values()).forEach(function (s) { if (s.example) S.students.delete(s.id); });
+      S.fStudent = "";
+    }, "Examples cleared. The ledger is ready for your students.");
+  }
+
+  /* ---------- files: CSV, backup, restore ---------- */
+  function downloadFile(name, text, type) {
+    var url = URL.createObjectURL(new Blob([text], { type: type }));
+    var a = document.createElement("a");
+    a.href = url; a.download = name; a.rel = "noopener";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 5000);
+  }
+  // On Android this opens the share sheet (Drive, Gmail, Files) when the file type allows it; otherwise it downloads.
+  async function shareOrDownload(name, text, type) {
+    try {
+      var file = new File([text], name, { type: type });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file], title: name });
+        return "shared";
+      }
+    } catch (e) {
+      if (e && e.name === "AbortError") return "cancelled";
+    }
+    downloadFile(name, text, type);
+    return "downloaded";
+  }
+  function csvCell(v) {
+    var s = String(v == null ? "" : v);
+    return /[",\r\n;]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  }
+  async function exportCSV() {
+    var rows = Array.from(S.sessions.values()).filter(function (s) { return String(s.date || "").indexOf(S.month) === 0; })
+      .sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
+    var out = [["Date", "Student", "Course", "Minutes", "Hours", "Rate (PLN/h)", "Amount (PLN)", "Paid", "Paid on", "Topics", "Notes"]];
+    rows.forEach(function (s) {
+      var st = S.students.get(s.studentId) || {};
+      out.push([s.date, st.name || "", st.course || "", s.minutes, (s.minutes / 60).toFixed(2), s.rate, amountOf(s).toFixed(2), s.paid ? "yes" : "no", s.paidOn || "", (s.topics || []).join("; "), s.notes || ""]);
+    });
+    var csv = "﻿" + out.map(function (r) { return r.map(csvCell).join(","); }).join("\r\n") + "\r\n";
+    var res = await shareOrDownload("tutoring-" + S.month + ".csv", csv, "text/csv");
+    if (res === "downloaded") toast("CSV saved to Downloads");
+  }
+  async function backup() {
+    var data = snapshot();
+    data.exportedAt = new Date().toISOString();
+    delete data.lastBackup;
+    var name = "tutoring-ledger-backup-" + todayStr() + ".json";
+    var res = await shareOrDownload(name, JSON.stringify(data, null, 2), "application/json");
+    if (res === "cancelled") return;
+    commit(function () { S.lastBackup = data.exportedAt; },
+      res === "downloaded" ? "Backup saved to Downloads. Move it to Drive or email it to yourself." : "Backup shared");
+  }
+  function startRestore() { $("restore-file").click(); }
+  $("restore-file").addEventListener("change", function (e) {
+    var f = e.target.files && e.target.files[0];
+    e.target.value = "";
+    if (!f) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      var data = null;
+      try { data = JSON.parse(reader.result); } catch (err) {}
+      if (!data || data.app !== "tutoring-ledger" || !Array.isArray(data.students) || !Array.isArray(data.sessions)) {
+        toast("That file isn't a Tutoring Ledger backup.", true);
+        return;
+      }
+      pendingRestore = data;
+      var when = data.exportedAt ? " from " + fmtDate(String(data.exportedAt).slice(0, 10)) : "";
+      $("restore-text").textContent = "This replaces everything in the ledger on this device with the backup" + when + ": " +
+        plural(data.students.filter(validStudent).length, "student", "students") + " and " +
+        plural(data.sessions.filter(validSession).length, "session", "sessions") + ". What's here now will be gone unless you back it up first.";
+      $("dlg-restore").showModal();
+    };
+    reader.onerror = function () { toast("Couldn't read that file. Try again.", true); };
+    reader.readAsText(f);
+  });
+  $("btn-restore-confirm").addEventListener("click", function () {
+    var data = pendingRestore; pendingRestore = null;
+    if (!data) return;
+    var ok = commit(function () {
+      applyData({ students: data.students, sessions: data.sessions, settings: data.settings, lastBackup: data.exportedAt || null });
+      S.fStudent = "";
+    }, "Backup restored");
+    if (ok) $("dlg-restore").close();
+  });
+
+  /* ---------- install ---------- */
+  var installPrompt = null;
+  var standalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+  var installDismissed = false;
+  try { installDismissed = sessionStorage.getItem("tl-install-later") === "1"; } catch (e) {}
+  window.addEventListener("beforeinstallprompt", function (e) {
+    e.preventDefault();
+    installPrompt = e;
+    if (!standalone && !installDismissed) $("install-banner").hidden = false;
+  });
+  $("btn-install").addEventListener("click", async function () {
+    if (!installPrompt) return;
+    installPrompt.prompt();
+    try { await installPrompt.userChoice; } catch (e) {}
+    installPrompt = null;
+    $("install-banner").hidden = true;
+  });
+  $("btn-install-later").addEventListener("click", function () {
+    $("install-banner").hidden = true;
+    try { sessionStorage.setItem("tl-install-later", "1"); } catch (e) {}
+  });
+  window.addEventListener("appinstalled", function () {
+    $("install-banner").hidden = true;
+    toast("Installed. Open Tutoring Ledger from your home screen.");
+  });
+
+  /* ---------- events ---------- */
+  $("prev").addEventListener("click", function () { S.month = shiftMonth(S.month, -1); render(); });
+  $("next").addEventListener("click", function () { S.month = shiftMonth(S.month, 1); render(); });
+  $("to-today").addEventListener("click", function () { S.month = monthKey(new Date()); render(); });
+  $("btn-log").addEventListener("click", function () { openSession(); });
+  $("btn-log-m").addEventListener("click", function () { openSession(); });
+  $("btn-add-student").addEventListener("click", function () { openStudent(); });
+  $("btn-add-student-top").addEventListener("click", function () { openStudent(); });
+  $("btn-csv").addEventListener("click", exportCSV);
+  $("btn-backup").addEventListener("click", backup);
+  $("btn-backup-banner").addEventListener("click", backup);
+  $("btn-restore").addEventListener("click", startRestore);
+  $("btn-clear-ex").addEventListener("click", function (e) { clearExamples(e.currentTarget); });
+  $("f-student").addEventListener("change", function (e) { S.fStudent = e.target.value; render(); });
+  $("f-unpaid").addEventListener("change", function (e) { S.fUnpaid = e.target.checked; render(); });
+
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-act]");
+    if (!b || b.disabled) return;
+    var id = b.dataset.id, act = b.dataset.act;
+    if (act === "toggle") togglePaid(id);
+    else if (act === "edit") openSession(id);
+    else if (act === "edit-student") openStudent(id);
+    else if (act === "settle") settleStudent(id);
+    else if (act === "log-student") openSession(null, id);
+    else if (act === "add-student") openStudent();
+    else if (act === "log") openSession();
+  });
+
+  ["dlg-session", "dlg-student", "dlg-restore"].forEach(function (id) {
+    var d = $(id);
+    d.addEventListener("click", function (e) {
+      if (e.target === d || e.target.closest("[data-close]")) d.close();
+    });
+  });
+
+  $("form-session").addEventListener("submit", saveSession);
+  $("form-student").addEventListener("submit", saveStudent);
+  $("s-delete").addEventListener("click", deleteSession);
+  $("t-delete").addEventListener("click", deleteStudent);
+  $("s-minutes").addEventListener("input", function () { syncDur(); updateCalc(); });
+  $("s-rate").addEventListener("input", updateCalc);
+  $("s-paid").addEventListener("change", syncPaid);
+  $("s-student").addEventListener("change", function (e) {
+    var st = S.students.get(e.target.value);
+    if (st && !editing.session) {
+      if (st.rate != null) $("s-rate").value = numStr(st.rate);
+      $("s-minutes").value = lastMinutes(st.id);
+      syncDur(); updateCalc();
+    }
+  });
+  $("s-dur").addEventListener("click", function (e) {
+    var b = e.target.closest(".seg"); if (!b) return;
+    $("s-minutes").value = b.dataset.min; syncDur(); updateCalc();
+  });
+  $("tax-rate").addEventListener("change", function (e) {
+    var v = num(e.target.value);
+    if (!(v >= 0 && v <= 100)) { e.target.value = numStr(taxRate()); toast("Enter a rate between 0 and 100, for example 8,5.", true); return; }
+    if (v === taxRate()) return;
+    commit(function () { S.settings = Object.assign({}, S.settings, { taxRate: v }); }, "Ryczałt rate set to " + dec.format(v) + "%");
+  });
+
+  /* ---------- start ---------- */
+  load();
+  if (!S.storageOk) notice("This browser is blocking storage, so entries won't be kept. Turn off private browsing, or install the app and open it from your home screen.");
+  render();
+  if (navigator.storage && navigator.storage.persist) { navigator.storage.persist().catch(function () {}); }
+  if ("serviceWorker" in navigator && location.protocol !== "file:") {
+    window.addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });
+  }
+})();
+</script>
+</body>
+</html>
